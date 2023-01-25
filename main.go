@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	cgo_wrapper "github.com/wasm0/zkwasm-wasm-instrument-binding-go-integration/cgo-wrapper"
+	cgo_wrapper "github.com/wasm0/zkwasm-wasm-instrument-cgo/cgo-wrapper"
 )
 
 //go:embed cgo-wrapper/testdata/fixtures/stack-height/simple.wat
