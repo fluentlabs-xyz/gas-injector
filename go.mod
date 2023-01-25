@@ -1,4 +1,4 @@
-module github.com/wasm0/zkwasm-wasm-instrument-binding-go-integration
+module github.com/wasm0/zkwasm-wasm-instrument-cgo
 
 go 1.17
 
