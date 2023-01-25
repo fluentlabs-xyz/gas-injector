@@ -8,4 +8,3 @@ test:
 	LD_LIBRARY_PATH="$(PWD)/libs{LD_LIBRARY_PATH:+":$LD_LIBRARY_PATH"}" go test ./...
 clean:
 	rm -rf build
-	(cd zkwasm-wasm-instrument-binding; make clean)
