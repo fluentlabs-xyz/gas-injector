@@ -37,7 +37,5 @@ func main() {
 	}
 	timeEnd := time.Now().UnixMilli()
 	timeTook := timeEnd - timeStart
-	fmt.Printf("timeStart %v\n", timeStart)
-	fmt.Printf("timeEnd %v\n", timeEnd)
 	fmt.Printf("timeTook %v\n", timeTook)
 }
