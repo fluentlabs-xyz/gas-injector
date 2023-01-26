@@ -17,6 +17,7 @@ func TestGasSimple(t *testing.T) {
 	bytesRes, err := Inject(
 		moduleBytes,
 		InjectTypeGas,
+		InjectGasTypeHost,
 		1,
 		0,
 		1,
@@ -47,6 +48,7 @@ func TestStackHeightSimple(t *testing.T) {
 	bytesRes, err := Inject(
 		moduleBytes,
 		InjectTypeStackHeight,
+		InjectGasTypeHost,
 		1,
 		0,
 		1,
