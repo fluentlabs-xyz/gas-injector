@@ -44,7 +44,6 @@ func Inject(
 	if len(watStrOrBinaryAsm) <= 0 {
 		return nil, nil
 	}
-	// TODO convert [watStrOrBinaryAsm] to c-array
 	var argv = make([]C.uchar, len(watStrOrBinaryAsm))
 	for i, item := range watStrOrBinaryAsm {
 		argv[i] = C.uchar(item)
