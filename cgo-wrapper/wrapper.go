@@ -61,7 +61,6 @@ func Inject(
 		C.int(returnFormat),
 	)
 	var sliceRes = unsafe.Slice(cBuffer.data, int(cBuffer.len))
-	// TODO do we need to free up [cBuffer] memory manually (looks like no)?
 	moduleBytesRes = make([]byte, len(sliceRes))
 	for i, v := range sliceRes {
 		moduleBytesRes[i] = byte(v)
