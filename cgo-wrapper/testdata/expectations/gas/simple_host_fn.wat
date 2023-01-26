@@ -10,7 +10,7 @@
       i64.const 1
       call 0
       loop ;; label = @2
-        i64.const 2
+        i64.const 121
         call 0
         i32.const 123
         drop

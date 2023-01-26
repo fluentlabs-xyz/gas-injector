@@ -9,9 +9,10 @@
 extern "C" {
 #endif
 
-struct Buffer {
+struct ResultStruct {
   uintptr_t len;
   unsigned char *data;
+  int exit_code;
 } inject_into_utf8_wat_or_binary_wasm_external(
     unsigned const char *utf8_wat_or_binary_wasm_bytes_ptr_c,
     uintptr_t utf8_wat_or_binary_wasm_bytes_length_c,

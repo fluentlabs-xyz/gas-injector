@@ -58,7 +58,7 @@ func Inject(
 	}
 
 	moduleBytesLen := C.ulong(len(argv))
-	cBuffer := C.inject_into_utf8_wat_or_binary_wasm_external(
+	cResultStruct := C.inject_into_utf8_wat_or_binary_wasm_external(
 		&argv[0],
 		moduleBytesLen,
 		C.int(injectType),
@@ -69,7 +69,10 @@ func Inject(
 		C.int(stackLimit),
 		C.int(returnFormat),
 	)
-	var sliceRes = unsafe.Slice(cBuffer.data, int(cBuffer.len))
+	if cResultStruct.exit_code != 0 {
+		return nil, errors.New("inject failed")
+	}
+	var sliceRes = unsafe.Slice(cResultStruct.data, int(cResultStruct.len))
 	moduleBytesRes = make([]byte, len(sliceRes))
 	for i, v := range sliceRes {
 		moduleBytesRes[i] = byte(v)
