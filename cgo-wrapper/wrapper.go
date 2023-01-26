@@ -22,6 +22,13 @@ const (
 	InjectTypeBoth
 )
 
+type InjectGasType int32
+
+const (
+	InjectGasTypeHost InjectGasType = iota
+	InjectGasTypeMutGlobal
+)
+
 type ReturnFormat int32
 
 const (
@@ -32,6 +39,7 @@ const (
 func Inject(
 	watStrOrBinaryAsm []byte,
 	injectType InjectType,
+	injectGasType InjectGasType,
 	instructionCost int,
 	memoryGrowCost int,
 	callPerLocalCost int,

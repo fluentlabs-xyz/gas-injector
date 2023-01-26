@@ -16,6 +16,7 @@ struct Buffer {
     unsigned const char *utf8_wat_or_binary_wasm_bytes_ptr_c,
     uintptr_t utf8_wat_or_binary_wasm_bytes_length_c,
     int inject_type,
+    int inject_gas_type,
     int instruction_cost,
     int memory_grow_cost,
     int call_per_local_cost,

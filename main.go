@@ -20,6 +20,7 @@ func main() {
 		moduleBytesRes, err := cgo_wrapper.Inject(
 			moduleBytes,
 			cgo_wrapper.InjectTypeBoth,
+			cgo_wrapper.InjectGasTypeMutGlobal,
 			1,
 			0,
 			1,
