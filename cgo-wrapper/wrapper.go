@@ -62,6 +62,7 @@ func Inject(
 		&argv[0],
 		moduleBytesLen,
 		C.int(injectType),
+		C.int(injectGasType),
 		C.int(instructionCost),
 		C.int(memoryGrowCost),
 		C.int(callPerLocalCost),
