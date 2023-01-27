@@ -1,6 +1,4 @@
 /.idea
 /build
 /tmp
-/libs
-!/libs/.gitkeep
-!/libs/*.h
+/libs/*.so
