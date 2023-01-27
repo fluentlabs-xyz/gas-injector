@@ -3,3 +3,4 @@
 /tmp
 /libs
 !/libs/.gitkeep
+!/libs/*.h
