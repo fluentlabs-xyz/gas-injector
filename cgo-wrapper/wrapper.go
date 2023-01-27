@@ -1,8 +1,8 @@
 package cgo_wrapper
 
 /*
-#cgo LDFLAGS: -L "../libs" -lzkwasm_wasm_instrument_c_export
-#cgo CFLAGS: -I "../libs"
+#cgo LDFLAGS: -L "../libs" -L "./libs" -lzkwasm_wasm_instrument_c_export
+#cgo CFLAGS: -I "../libs" -I "./libs"
 #include "../libs/libzkwasm_wasm_instrument_c_export.h"
 */
 import "C"
