@@ -1,9 +1,9 @@
 package cgo_wrapper
 
 /*
-#cgo LDFLAGS: -L "../libs" -lzkwasm_wasm_instrument_binding
+#cgo LDFLAGS: -L "../libs" -lzkwasm_wasm_instrument_c_export
 #cgo CFLAGS: -I "../libs"
-#include "../libs/libzkwasm_wasm_instrument_binding.h"
+#include "../libs/libzkwasm_wasm_instrument_c_export.h"
 */
 import "C"
 

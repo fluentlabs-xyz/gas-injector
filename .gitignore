@@ -1,3 +1,5 @@
 /.idea
 /build
 /tmp
+/libs
+!/libs/.gitkeep
