@@ -16,8 +16,8 @@ import (
 
 	"github.com/pkg/errors"
 
-	_ "github.com/wasm0/zkwasm-wasm-instrument-cgo/packaged/include"
-	_ "github.com/wasm0/zkwasm-wasm-instrument-cgo/packaged/lib"
+	_ "github.com/wasm0/zkwasm-gas-injector/packaged/include"
+	_ "github.com/wasm0/zkwasm-gas-injector/packaged/lib"
 )
 
 type InjectType int32

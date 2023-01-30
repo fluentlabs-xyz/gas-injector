@@ -1,4 +1,4 @@
-module github.com/wasm0/zkwasm-wasm-instrument-cgo
+module github.com/wasm0/zkwasm-gas-injector
 
 go 1.17
 
