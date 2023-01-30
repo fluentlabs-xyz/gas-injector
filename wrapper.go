@@ -1,9 +1,12 @@
-package cgo_wrapper
+package zkwasm_wasm_instrument_cgo
 
 /*
-#cgo LDFLAGS: -L "../libs" -lzkwasm_wasm_instrument_c_export
-#cgo CFLAGS: -I "../libs"
-#include "../libs/libzkwasm_wasm_instrument_c_export.h"
+#cgo CFLAGS: -I${SRCDIR}/packaged/include
+#cgo LDFLAGS: -lzkwasm_wasm_instrument_c_export
+
+#cgo linux,amd64 LDFLAGS: -Wl,-rpath,${SRCDIR}/packaged/lib/linux-amd64 -L${SRCDIR}/packaged/lib/linux-amd64
+#cgo darwin,arm64 LDFLAGS: -Wl,-rpath,${SRCDIR}/packaged/lib/darwin-aarch64 -L${SRCDIR}/packaged/lib/darwin-aarch64
+#include <libzkwasm_wasm_instrument_c_export.h>
 */
 import "C"
 

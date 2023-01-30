@@ -1,4 +1,4 @@
-package cgo_wrapper
+package zkwasm_wasm_instrument_cgo
 
 import (
 	_ "embed"
