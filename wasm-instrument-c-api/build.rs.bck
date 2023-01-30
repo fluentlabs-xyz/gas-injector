@@ -1,0 +1,93 @@
+use std::{
+    env,
+    ffi::OsStr,
+    path::{PathBuf},
+};
+
+fn main() {
+    build_cdylib_link_arg();
+}
+
+fn build_cdylib_link_arg() {
+    // Code inspired by the `cdylib-link-lines` crate.
+    let mut lines = Vec::new();
+    let os = env::var("CARGO_CFG_TARGET_OS").unwrap();
+    let env = env::var("CARGO_CFG_TARGET_ENV").unwrap();
+    let version_major = env::var("CARGO_PKG_VERSION_MAJOR").unwrap();
+    let version_minor = env::var("CARGO_PKG_VERSION_MINOR").unwrap();
+    let version_patch = env::var("CARGO_PKG_VERSION_PATCH").unwrap();
+    let shared_object_dir = shared_object_dir();
+
+    match (os.as_str(), env.as_str()) {
+        ("android", _) => {
+            lines.push("-Wl,-soname,gas_injector.so".to_string());
+        }
+
+        ("linux", _) | ("freebsd", _) | ("dragonfly", _) | ("netbsd", _) if env != "musl" => {
+            lines.push("-Wl,-soname,gas_injector.so".to_string());
+        }
+
+        ("macos", _) | ("ios", _) => {
+            lines.push(format!(
+                "-Wl,-install_name,@rpath/gas_injector.dylib,-current_version,{x}.{y}.{z},-compatibility_version,{x}",
+                x = version_major,
+                y = version_minor,
+                z = version_patch,
+            ));
+        }
+
+        ("windows", "gnu") => {
+            // This is only set up to work on GNU toolchain versions of Rust
+            lines.push(format!(
+                "-Wl,--out-implib,{}",
+                shared_object_dir.join("wasmer.dll.a").display()
+            ));
+            lines.push(format!(
+                "-Wl,--output-def,{}",
+                shared_object_dir.join("wasmer.def").display()
+            ));
+        }
+
+        _ => {}
+    }
+
+    for line in lines {
+        println!("cargo:rustc-cdylib-link-arg={}", line);
+    }
+}
+
+fn shared_object_dir() -> PathBuf {
+    // We start from `OUT_DIR` because `cargo publish` uses a different directory
+    // so traversing from `CARGO_MANIFEST_DIR` is less reliable.
+    let mut shared_object_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
+
+    assert_eq!(shared_object_dir.file_name(), Some(OsStr::new("out")));
+    shared_object_dir.pop();
+
+    assert!(shared_object_dir
+        .file_name()
+        .as_ref()
+        .unwrap()
+        .to_string_lossy()
+        .to_string()
+        .starts_with("zkwasm_wasm_instrument_c_export"));
+    shared_object_dir.pop();
+
+    assert_eq!(shared_object_dir.file_name(), Some(OsStr::new("build")));
+    shared_object_dir.pop();
+    shared_object_dir.pop(); // "debug" or "release"
+
+    // We either find `target` or the target triple if cross-compiling.
+    if shared_object_dir.file_name() != Some(OsStr::new("target")) {
+        let target = env::var("TARGET").unwrap();
+        if shared_object_dir.file_name() != Some(OsStr::new("llvm-cov-target")) {
+            assert_eq!(shared_object_dir.file_name(), Some(OsStr::new(&target)));
+        } else {
+            shared_object_dir.set_file_name(&target);
+        }
+    }
+
+    shared_object_dir.push(env::var("PROFILE").unwrap());
+
+    shared_object_dir
+}

@@ -1,0 +1,10 @@
+/Cargo.lock
+target
+.cargo
+.DS_Store
+.idea
+.vscode
+*~
+/build
+/build-release
+/tmp
