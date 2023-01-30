@@ -14,6 +14,9 @@ import (
 	"unsafe"
 
 	"github.com/pkg/errors"
+
+	_ "github.com/wasm0/zkwasm-wasm-instrument-cgo/packaged/include"
+	_ "github.com/wasm0/zkwasm-wasm-instrument-cgo/packaged/lib"
 )
 
 type InjectType int32
