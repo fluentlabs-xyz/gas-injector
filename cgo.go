@@ -1,4 +1,4 @@
-package zkwasm_wasm_instrument_cgo
+package zkwasm_gas_injector
 
 // #cgo CFLAGS: -I${SRCDIR}/packaged/include
 // #cgo LDFLAGS: -lgas_injector
