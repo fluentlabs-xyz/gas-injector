@@ -16,7 +16,7 @@ impl CustomConstantCostRules {
 
 impl Rules for CustomConstantCostRules {
     fn instruction_cost(&self, instruction: &Instruction) -> Option<u32> {
-        match instruction {
+        let cost = match instruction {
             Instruction::Unreachable => Some(1),
             Instruction::Nop => Some(1),
             Instruction::Block(_) => Some(1),
@@ -210,7 +210,8 @@ impl Rules for CustomConstantCostRules {
 
             #[allow(unreachable_patterns)]
             _ => Some(self.instruction_cost),
-        }
+        };
+        cost
     }
 
     fn memory_grow_cost(&self) -> MemoryGrowCost {

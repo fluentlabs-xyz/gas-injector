@@ -37,6 +37,37 @@ func TestGasSimple(t *testing.T) {
 	}
 }
 
+//go:embed testdata/fixtures/gas/hello.wat
+var gasHelloWatData string
+
+//go:embed testdata/expectations/gas/hello_host_fn.wat
+var gasHelloWatDataExpected string
+
+func TestGasHello(t *testing.T) {
+	moduleBytes := []byte(gasHelloWatData)
+	bytesRes, err := Inject(
+		moduleBytes,
+		InjectTypeBoth,
+		InjectGasTypeHost,
+		1,
+		10000,
+		1,
+		1024,
+		ReturnFormatWat,
+	)
+	if err != nil {
+		fmt.Printf("failed to Inject, reason '%s'", err)
+	}
+	stringRes := string(bytesRes)
+	if stringRes != gasHelloWatDataExpected {
+		t.Errorf(
+			"result!=gasSimpleWatDataExpected. result='%s' gasSimpleWatDataExpected='%s'",
+			stringRes,
+			gasHelloWatDataExpected,
+		)
+	}
+}
+
 //go:embed testdata/fixtures/stack-height/simple.wat
 var stackHeightSimpleWatData string
 

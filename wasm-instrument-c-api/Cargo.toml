@@ -6,7 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-wasm-instrument = "0.4.0"
+#wasm-instrument = "0.4.0"
+wasm-instrument = { path = "../external/zkwasm-wasm-instrument" }
 wasmprinter = "0.2.48"
 wat = "1.0.55"
 
