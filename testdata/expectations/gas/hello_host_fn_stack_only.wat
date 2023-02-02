@@ -79,7 +79,21 @@
         local.get 1
         i32.const 88
         i32.add
+        global.get 3
+        i32.const 7
+        i32.add
+        global.set 3
+        global.get 3
+        i32.const 1024
+        i32.gt_u
+        if ;; label = @3
+          unreachable
+        end
         call 7
+        global.get 3
+        i32.const 7
+        i32.sub
+        global.set 3
         local.get 1
         i32.load8_u offset=24
         i32.const 1
@@ -205,7 +219,21 @@
             end
             local.get 3
             i32.const 1049016
+            global.get 3
+            i32.const 6
+            i32.add
+            global.set 3
+            global.get 3
+            i32.const 1024
+            i32.gt_u
+            if ;; label = @5
+              unreachable
+            end
             call 8
+            global.get 3
+            i32.const 6
+            i32.sub
+            global.set 3
             unreachable
           end
           local.get 1
@@ -422,7 +450,21 @@
           local.get 1
           i32.const 88
           i32.add
+          global.get 3
+          i32.const 7
+          i32.add
+          global.set 3
+          global.get 3
+          i32.const 1024
+          i32.gt_u
+          if ;; label = @4
+            unreachable
+          end
           call 9
+          global.get 3
+          i32.const 7
+          i32.sub
+          global.set 3
           local.get 1
           i32.load offset=16
           i32.eqz
@@ -501,7 +543,21 @@
           local.get 1
           i32.const 88
           i32.add
+          global.get 3
+          i32.const 7
+          i32.add
+          global.set 3
+          global.get 3
+          i32.const 1024
+          i32.gt_u
+          if ;; label = @4
+            unreachable
+          end
           call 7
+          global.get 3
+          i32.const 7
+          i32.sub
+          global.set 3
           local.get 1
           i32.load8_u offset=8
           i32.const 1
@@ -579,7 +635,21 @@
           local.get 1
           i32.const 88
           i32.add
+          global.get 3
+          i32.const 7
+          i32.add
+          global.set 3
+          global.get 3
+          i32.const 1024
+          i32.gt_u
+          if ;; label = @4
+            unreachable
+          end
           call 7
+          global.get 3
+          i32.const 7
+          i32.sub
+          global.set 3
           local.get 1
           i32.load8_u
           i32.const 1
@@ -625,7 +695,21 @@
       i32.const 88
       i32.add
       i32.const 1048616
+      global.get 3
+      i32.const 5
+      i32.add
+      global.set 3
+      global.get 3
+      i32.const 1024
+      i32.gt_u
+      if ;; label = @2
+        unreachable
+      end
       call 10
+      global.get 3
+      i32.const 5
+      i32.sub
+      global.set 3
       unreachable
     end
     local.get 1
@@ -645,9 +729,23 @@
     i32.const 8
     i32.add
     local.get 1
+    global.get 3
+    i32.const 7
+    i32.add
+    global.set 3
+    global.get 3
+    i32.const 1024
+    i32.gt_u
+    if ;; label = @1
+      unreachable
+    end
     call 9
-    block  ;; label = @1
-      block  ;; label = @2
+    global.get 3
+    i32.const 7
+    i32.sub
+    global.set 3
+    block ;; label = @1
+      block ;; label = @2
         local.get 2
         i32.load offset=8
         local.tee 3
@@ -725,8 +823,23 @@
     i32.const 8
     i32.add
     local.get 1
+    global.get 3
+    i32.const 5
+    i32.add
+    global.set 3
+    global.get 3
+    i32.const 1024
+    i32.gt_u
+    if ;; label = @1
+      unreachable
+    end
     call 10
-    unreachable)
+    global.get 3
+    i32.const 5
+    i32.sub
+    global.set 3
+    unreachable
+  )
   (func (;9;) (type 3) (param i32 i32)
     (local i32 i32)
     i32.const 0
@@ -779,8 +892,23 @@
     local.get 2
     i32.const 8
     i32.add
+    global.get 3
+    i32.const 6
+    i32.add
+    global.set 3
+    global.get 3
+    i32.const 1024
+    i32.gt_u
+    if ;; label = @1
+      unreachable
+    end
     call 11
-    unreachable)
+    global.get 3
+    i32.const 6
+    i32.sub
+    global.set 3
+    unreachable
+  )
   (func (;11;) (type 2) (param i32)
     (local i32 i32)
     global.get 0
@@ -793,7 +921,21 @@
       i32.load offset=8
       local.tee 2
       br_if 0 (;@1;)
+      global.get 3
+      i32.const 6
+      i32.add
+      global.set 3
+      global.get 3
+      i32.const 1024
+      i32.gt_u
+      if ;; label = @2
+        unreachable
+      end
       call 16
+      global.get 3
+      i32.const 6
+      i32.sub
+      global.set 3
       unreachable
     end
     local.get 1
@@ -807,8 +949,23 @@
     local.get 2
     i32.store
     local.get 1
+    global.get 3
+    i32.const 6
+    i32.add
+    global.set 3
+    global.get 3
+    i32.const 1024
+    i32.gt_u
+    if ;; label = @1
+      unreachable
+    end
     call 18
-    unreachable)
+    global.get 3
+    i32.const 6
+    i32.sub
+    global.set 3
+    unreachable
+  )
   (func (;12;) (type 2) (param i32))
   (func (;13;) (type 5) (param i32) (result i64)
     i64.const -2339565740727300315
@@ -1018,7 +1175,21 @@
         local.tee 6
         local.get 9
         local.get 10
+        global.get 3
+        i32.const 7
+        i32.add
+        global.set 3
+        global.get 3
+        i32.const 1024
+        i32.gt_u
+        if ;; label = @3
+          unreachable
+        end
         call 15
+        global.get 3
+        i32.const 7
+        i32.sub
+        global.set 3
         br_if 1 (;@1;)
         local.get 0
         local.get 11
@@ -1081,7 +1252,21 @@
               local.tee 6
               local.get 9
               local.get 10
+              global.get 3
+              i32.const 7
+              i32.add
+              global.set 3
+              global.get 3
+              i32.const 1024
+              i32.gt_u
+              if ;; label = @6
+                unreachable
+              end
               call 15
+              global.get 3
+              i32.const 7
+              i32.sub
+              global.set 3
               br_if 4 (;@1;)
               local.get 0
               local.get 11
@@ -1156,7 +1341,21 @@
         local.get 7
         local.get 9
         local.get 10
+        global.get 3
+        i32.const 7
+        i32.add
+        global.set 3
+        global.get 3
+        i32.const 1024
+        i32.gt_u
+        if ;; label = @3
+          unreachable
+        end
         call 15
+        global.get 3
+        i32.const 7
+        i32.sub
+        global.set 3
         br_if 1 (;@1;)
         local.get 13
         local.get 11
@@ -1227,7 +1426,21 @@
       local.tee 13
       local.get 9
       local.get 10
+      global.get 3
+      i32.const 7
+      i32.add
+      global.set 3
+      global.get 3
+      i32.const 1024
+      i32.gt_u
+      if ;; label = @2
+        unreachable
+      end
       call 15
+      global.get 3
+      i32.const 7
+      i32.sub
+      global.set 3
       br_if 0 (;@1;)
       local.get 0
       local.get 12
@@ -1341,8 +1554,23 @@
     i32.store
     local.get 0
     i32.const 1049104
+    global.get 3
+    i32.const 5
+    i32.add
+    global.set 3
+    global.get 3
+    i32.const 1024
+    i32.gt_u
+    if ;; label = @1
+      unreachable
+    end
     call 10
-    unreachable)
+    global.get 3
+    i32.const 5
+    i32.sub
+    global.set 3
+    unreachable
+  )
   (func (;17;) (type 7)
     unreachable
     unreachable
@@ -1367,8 +1595,23 @@
     i64.load align=4
     i64.store
     local.get 1
+    global.get 3
+    i32.const 6
+    i32.add
+    global.set 3
+    global.get 3
+    i32.const 1024
+    i32.gt_u
+    if ;; label = @1
+      unreachable
+    end
     call 19
-    unreachable)
+    global.get 3
+    i32.const 6
+    i32.sub
+    global.set 3
+    unreachable
+  )
   (func (;19;) (type 2) (param i32)
     (local i32 i32)
     local.get 0
@@ -1389,14 +1632,43 @@
       local.get 0
       i32.load offset=4
       i32.load8_u offset=16
+      global.get 3
+      i32.const 7
+      i32.add
+      global.set 3
+      global.get 3
+      i32.const 1024
+      i32.gt_u
+      if ;; label = @2
+        unreachable
+      end
       call 20
+      global.get 3
+      i32.const 7
+      i32.sub
+      global.set 3
       unreachable
     end
     local.get 0
     i32.load offset=4
     i32.load8_u offset=16
+    global.get 3
+    i32.const 7
+    i32.add
+    global.set 3
+    global.get 3
+    i32.const 1024
+    i32.gt_u
+    if ;; label = @1
+      unreachable
+    end
     call 20
-    unreachable)
+    global.get 3
+    i32.const 7
+    i32.sub
+    global.set 3
+    unreachable
+  )
   (func (;20;) (type 2) (param i32)
     (local i32 i32)
     i32.const 0
@@ -1434,19 +1706,109 @@
       local.get 0
       i32.eqz
       br_if 0 (;@1;)
+      global.get 3
+      i32.const 2
+      i32.add
+      global.set 3
+      global.get 3
+      i32.const 1024
+      i32.gt_u
+      if ;; label = @2
+        unreachable
+      end
       call 17
+      global.get 3
+      i32.const 2
+      i32.sub
+      global.set 3
       unreachable
     end
     unreachable
-    unreachable)
+    unreachable
+  )
+  (func (;21;) (type 4) (param i32) (result i32)
+    local.get 0
+    global.get 3
+    i32.const 12
+    i32.add
+    global.set 3
+    global.get 3
+    i32.const 1024
+    i32.gt_u
+    if ;; label = @1
+      unreachable
+    end
+    call 6
+    global.get 3
+    i32.const 12
+    i32.sub
+    global.set 3
+  )
+  (func (;22;) (type 2) (param i32)
+    local.get 0
+    global.get 3
+    i32.const 2
+    i32.add
+    global.set 3
+    global.get 3
+    i32.const 1024
+    i32.gt_u
+    if ;; label = @1
+      unreachable
+    end
+    call 12
+    global.get 3
+    i32.const 2
+    i32.sub
+    global.set 3
+  )
+  (func (;23;) (type 5) (param i32) (result i64)
+    local.get 0
+    global.get 3
+    i32.const 3
+    i32.add
+    global.set 3
+    global.get 3
+    i32.const 1024
+    i32.gt_u
+    if ;; label = @1
+      unreachable
+    end
+    call 13
+    global.get 3
+    i32.const 3
+    i32.sub
+    global.set 3
+  )
+  (func (;24;) (type 1) (param i32 i32) (result i32)
+    local.get 0
+    local.get 1
+    global.get 3
+    i32.const 20
+    i32.add
+    global.set 3
+    global.get 3
+    i32.const 1024
+    i32.gt_u
+    if ;; label = @1
+      unreachable
+    end
+    call 14
+    global.get 3
+    i32.const 20
+    i32.sub
+    global.set 3
+  )
   (table (;0;) 4 4 funcref)
   (memory (;0;) 17)
-  (global (;0;) (mut i32) (i32.const 1048576))
-  (global (;1;) i32 (i32.const 1049132))
-  (global (;2;) i32 (i32.const 1049136))
+  (global (;0;) (mut i32) i32.const 1048576)
+  (global (;1;) i32 i32.const 1049132)
+  (global (;2;) i32 i32.const 1049136)
+  (global (;3;) (mut i32) i32.const 0)
   (export "memory" (memory 0))
-  (export "main" (func 6))
+  (export "main" (func 21))
   (export "__data_end" (global 1))
   (export "__heap_base" (global 2))
-  (elem (;0;) (i32.const 1) func 14 12 13)
-  (data (;0;) (i32.const 1048576) "some panic message\00\00\00\00\10\00\12\00\00\00src/lib.rs\00\00\1c\00\10\00\0a\00\00\00;\00\00\00\05\00\00\00index out of bounds: the len is  but the index is \00\008\00\10\00 \00\00\00X\00\10\00\12\00\00\00\02\00\00\00\00\00\00\00\01\00\00\00\03\00\00\0000010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899/Users/dmitry/.cargo/registry/src/github.com-1ecc6299db9ec823/fixed-bigint-0.1.9/src/fixeduint.rs\00\00\00T\01\10\00a\00\00\00K\00\00\00\1c\00\00\00called `Option::unwrap()` on a `None` valuelibrary/std/src/panicking.rs\00\f3\01\10\00\1c\00\00\00+\02\00\00\0f\00\00\00"))
+  (elem (;0;) (i32.const 1) func 24 22 23)
+  (data (;0;) (i32.const 1048576) "some panic message\00\00\00\00\10\00\12\00\00\00src/lib.rs\00\00\1c\00\10\00\0a\00\00\00;\00\00\00\05\00\00\00index out of bounds: the len is  but the index is \00\008\00\10\00 \00\00\00X\00\10\00\12\00\00\00\02\00\00\00\00\00\00\00\01\00\00\00\03\00\00\0000010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899/Users/dmitry/.cargo/registry/src/github.com-1ecc6299db9ec823/fixed-bigint-0.1.9/src/fixeduint.rs\00\00\00T\01\10\00a\00\00\00K\00\00\00\1c\00\00\00called `Option::unwrap()` on a `None` valuelibrary/std/src/panicking.rs\00\f3\01\10\00\1c\00\00\00+\02\00\00\0f\00\00\00")
+)
