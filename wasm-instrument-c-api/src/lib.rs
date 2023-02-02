@@ -14,16 +14,19 @@ pub fn inject_into_utf8_wat_or_binary_wasm(
     utf8_wat_or_binary_wasm_vector: Vec<u8>,
     inject_type: u32,
     inject_gas_type: u32,
-    instruction_cost: u32,
-    memory_grow_cost: u32,
+    default_instruction_cost: u32,
+    default_memory_grow_cost: u32,
     call_per_local_cost: u32,
     stack_limit: u32,
 ) -> Result<Vec<u8>, String> {
-    let utf8_wat_or_binary_wasm_bytes = wat::parse_bytes(&utf8_wat_or_binary_wasm_vector[..]).unwrap();
+    let utf8_wat_or_binary_wasm_bytes = match wat::parse_bytes(&utf8_wat_or_binary_wasm_vector[..]) {
+        Ok(v) => v,
+        Err(_) => return Err("Failed to parse bytes wat or wasm bytes".to_string())
+    };
 
     let module: elements::Module = match elements::deserialize_buffer(utf8_wat_or_binary_wasm_bytes.as_ref()) {
         Ok(v) => v,
-        Err(_) => return Err("Failed to deserialize wat or wasm bytes".to_string())
+        Err(_) => return Err("Failed to deserialize wat or wasm bytes into module".to_string())
     };
     let mut res_module: elements::Module = module;
     if inject_type == 1 || inject_type == 3 {
@@ -32,8 +35,8 @@ pub fn inject_into_utf8_wat_or_binary_wasm(
             Err(_) => return Err("Failed to parse names".to_string())
         };
         let rules = gas_rules::CustomConstantCostRules::new(
-            instruction_cost,
-            memory_grow_cost,
+            default_instruction_cost,
+            default_memory_grow_cost,
             call_per_local_cost
         );
         if inject_gas_type == 1 {
@@ -142,4 +145,43 @@ pub unsafe extern "C" fn inject_into_utf8_wat_or_binary_wasm_external(
     std::mem::forget(res_bytes);
 
     inject_result
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::inject_into_utf8_wat_or_binary_wasm;
+    use std::{fs, str};
+
+    #[test]
+    fn test_hello_wat() {
+        let input_wat = fs::read_to_string("../testdata/fixtures/gas/hello.wat").expect("Unable to read file");
+        let expected_wat = fs::read_to_string("../testdata/expectations/gas/hello_host_fn.wat").expect("Unable to read file");
+        let res = inject_into_utf8_wat_or_binary_wasm(
+            input_wat.clone().into_bytes(),
+            3,
+            0,
+            1,
+            10000,
+            0,
+            1024,
+        );
+        match &res {
+            Ok(v) => {
+                assert_eq!(v.len(), 4820);
+                let res_wat_bytes = match wasmprinter::print_bytes(&v) {
+                    Ok(v) => v,
+                    Err(e) => { println!("ERROR: Invalid UTF-8 sequence: {}", e); "".to_string() },
+                };
+                assert_eq!(res_wat_bytes.len(), 39390);
+                let res_bytes = res_wat_bytes.into_bytes();
+                let res_wat = match str::from_utf8(res_bytes.as_ref()) {
+                    Ok(v) => v,
+                    Err(e) => { println!("ERROR: Invalid UTF-8 sequence: {}", e); "" }
+                };
+                assert_eq!(expected_wat.len(), res_wat.len());
+                assert_eq!(expected_wat, res_wat);
+            },
+            Err(e_text) => println!("ERROR: {}", e_text),
+        }
+    }
 }
