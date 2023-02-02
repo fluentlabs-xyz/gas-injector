@@ -17,7 +17,7 @@
   (import "env" "gas" (func (;6;) (type 8)))
   (func (;7;) (type 4) (param i32) (result i32)
     (local i32 i32 i32 i32 i32 i32 i32)
-    i64.const 3054
+    i64.const 3047
     call 6
     global.get 0
     i32.const 128
@@ -770,7 +770,7 @@
   )
   (func (;8;) (type 3) (param i32 i32)
     (local i32 i32)
-    i64.const 2288
+    i64.const 2286
     call 6
     global.get 0
     i32.const 16
@@ -832,7 +832,7 @@
   )
   (func (;9;) (type 3) (param i32 i32)
     (local i32)
-    i64.const 3854
+    i64.const 3853
     call 6
     global.get 0
     i32.const 48
@@ -900,7 +900,7 @@
   )
   (func (;10;) (type 3) (param i32 i32)
     (local i32 i32)
-    i64.const 1579
+    i64.const 1577
     call 6
     i32.const 0
     local.set 2
@@ -931,7 +931,7 @@
   )
   (func (;11;) (type 3) (param i32 i32)
     (local i32)
-    i64.const 2107
+    i64.const 2106
     call 6
     global.get 0
     i32.const 32
@@ -975,7 +975,7 @@
   )
   (func (;12;) (type 2) (param i32)
     (local i32 i32)
-    i64.const 2270
+    i64.const 2268
     call 6
     global.get 0
     i32.const 16
@@ -1042,7 +1042,7 @@
   )
   (func (;15;) (type 1) (param i32 i32) (result i32)
     (local i32 i32 i64 i64 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
-    i64.const 4880
+    i64.const 4866
     call 6
     global.get 0
     i32.const 48
@@ -1632,7 +1632,7 @@
   )
   (func (;16;) (type 6) (param i32 i32 i32 i32) (result i32)
     (local i32)
-    i64.const 260
+    i64.const 259
     call 6
     block ;; label = @1
       block ;; label = @2
@@ -1677,7 +1677,7 @@
   )
   (func (;17;) (type 7)
     (local i32)
-    i64.const 2276
+    i64.const 2275
     call 6
     global.get 0
     i32.const 32
@@ -1733,7 +1733,7 @@
   )
   (func (;19;) (type 2) (param i32)
     (local i32)
-    i64.const 1670
+    i64.const 1669
     call 6
     global.get 0
     i32.const 16
@@ -1772,7 +1772,7 @@
   )
   (func (;20;) (type 2) (param i32)
     (local i32 i32)
-    i64.const 1461
+    i64.const 1459
     call 6
     local.get 0
     i32.load
@@ -1835,7 +1835,7 @@
   )
   (func (;21;) (type 2) (param i32)
     (local i32 i32)
-    i64.const 1077
+    i64.const 1075
     call 6
     i32.const 0
     i32.const 0

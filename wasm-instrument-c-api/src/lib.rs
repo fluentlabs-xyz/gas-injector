@@ -1,5 +1,3 @@
-extern crate core;
-
 mod gas_rules;
 
 use core::slice;
@@ -156,31 +154,32 @@ mod tests {
 
     #[test]
     fn test_hello_wat() {
-        let data = fs::read_to_string("../testdata/fixtures/gas/hello.wat").expect("Unable to read file");
+        let input_wat = fs::read_to_string("../testdata/fixtures/gas/hello.wat").expect("Unable to read file");
+        let expected_wat = fs::read_to_string("../testdata/expectations/gas/hello_host_fn.wat").expect("Unable to read file");
         let res = inject_into_utf8_wat_or_binary_wasm(
-            data.into_bytes(),
+            input_wat.clone().into_bytes(),
             3,
             0,
             1,
             10000,
-            1,
+            0,
             1024,
         );
         match &res {
             Ok(v) => {
-                println!("v.len(): {}", v.len());
                 assert_eq!(v.len(), 4820);
-                let res_str = match wasmprinter::print_bytes(&v) {
+                let res_wat_bytes = match wasmprinter::print_bytes(&v) {
                     Ok(v) => v,
                     Err(e) => { println!("ERROR: Invalid UTF-8 sequence: {}", e); "".to_string() },
                 };
-                assert_eq!(res_str.len(), 39390);
-                let res_bytes = res_str.into_bytes();
-                let s = match str::from_utf8(res_bytes.as_ref()) {
+                assert_eq!(res_wat_bytes.len(), 39390);
+                let res_bytes = res_wat_bytes.into_bytes();
+                let res_wat = match str::from_utf8(res_bytes.as_ref()) {
                     Ok(v) => v,
                     Err(e) => { println!("ERROR: Invalid UTF-8 sequence: {}", e); "" }
                 };
-                // println!("{}", s);
+                assert_eq!(expected_wat.len(), res_wat.len());
+                assert_eq!(expected_wat, res_wat);
             },
             Err(e_text) => println!("ERROR: {}", e_text),
         }

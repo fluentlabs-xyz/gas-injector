@@ -20,7 +20,7 @@ func TestGasSimple(t *testing.T) {
 		InjectGasTypeHost,
 		1,
 		0,
-		1,
+		0,
 		1024,
 		ReturnFormatWat,
 	)
@@ -51,7 +51,7 @@ func TestGasHello(t *testing.T) {
 		InjectGasTypeHost,
 		1,
 		10000,
-		1,
+		0,
 		1024,
 		ReturnFormatWat,
 	)
@@ -82,7 +82,7 @@ func TestStackHeightSimple(t *testing.T) {
 		InjectGasTypeHost,
 		1,
 		0,
-		1,
+		0,
 		1024,
 		ReturnFormatWat,
 	)
