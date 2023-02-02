@@ -180,6 +180,7 @@ mod tests {
                 };
                 assert_eq!(expected_wat.len(), res_wat.len());
                 assert_eq!(expected_wat, res_wat);
+                // println!("res_wat '{}'", res_wat)
             },
             Err(e_text) => println!("ERROR: {}", e_text),
         }
