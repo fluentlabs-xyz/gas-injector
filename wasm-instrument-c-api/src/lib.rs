@@ -10,6 +10,8 @@ use wasm_instrument::gas_metering::{mutable_global, host_function};
 use wasm_instrument::inject_stack_limiter;
 use wasm_instrument::parity_wasm::elements;
 
+mod something;
+
 pub fn inject_into_utf8_wat_or_binary_wasm(
     utf8_wat_or_binary_wasm_vector: Vec<u8>,
     inject_type: u32,
@@ -154,6 +156,8 @@ mod tests {
 
     #[test]
     fn test_hello_wat() {
+        crate::something::dummy_func();
+
         let input_wat = fs::read_to_string("../testdata/fixtures/gas/hello.wat").expect("Unable to read file");
         let expected_wat = fs::read_to_string("../testdata/expectations/gas/hello_host_fn.wat").expect("Unable to read file");
         let res = inject_into_utf8_wat_or_binary_wasm(

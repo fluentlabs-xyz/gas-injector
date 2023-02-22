@@ -1,3 +1,6 @@
+#ifndef GAS_INJECTOR_H
+#define GAS_INJECTOR_H
+
 #include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -28,3 +31,5 @@ struct ResultStruct {
 #ifdef __cplusplus
 } // extern "C"
 #endif
+
+#endif // GAS_INJECTOR_H
