@@ -1,3 +1,0 @@
-[submodule "external/zkwasm-wasm-instrument"]
-	path = external/zkwasm-wasm-instrument
-	url = git@github.com:wasm0/zkwasm-wasm-instrument.git

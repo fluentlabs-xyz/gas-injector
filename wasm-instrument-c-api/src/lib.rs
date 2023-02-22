@@ -10,8 +10,6 @@ use wasm_instrument::gas_metering::{mutable_global, host_function};
 use wasm_instrument::inject_stack_limiter;
 use wasm_instrument::parity_wasm::elements;
 
-mod something;
-
 pub fn inject_into_utf8_wat_or_binary_wasm(
     utf8_wat_or_binary_wasm_vector: Vec<u8>,
     inject_type: u32,
