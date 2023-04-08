@@ -20,7 +20,7 @@ build-linux-amd64:
 	RUSTFLAGS="${RUSTFLAGS}" $(CARGO_BINARY) build --target=x86_64-unknown-linux-gnu --manifest-path wasm-instrument-c-api/Cargo.toml --release #--no-default-features $(capi_compiler_features)
 	cp wasm-instrument-c-api/target/x86_64-unknown-linux-gnu/release/libgas_injector.so packaged/lib/linux-amd64/
 build-linux-amd64-docker:
-	docker run --platform=linux/amd64 -v "$(pwd):/build" -it rust bash -c "cd /build && make build-linux-amd64"
+	docker run --platform=linux/amd64 -v "$(shell pwd):/build" -it rust bash -c "cd /build && make build-linux-amd64"
 build:
 	go build -o build/main main.go
 run:
