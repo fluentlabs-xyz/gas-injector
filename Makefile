@@ -17,14 +17,15 @@ build-apple-aarch64:
 	cp wasm-instrument-c-api/target/aarch64-apple-darwin/release/libgas_injector.dylib packaged/lib/darwin-aarch64/
 build-linux-amd64:
 	rustup target add x86_64-unknown-linux-gnu
-	RUSTFLAGS="${RUSTFLAGS}" $(CARGO_BINARY) build --target=x86_64-unknown-linux-gnu --manifest-path wasm-instrument-c-api/Cargo.toml --release #--no-default-features $(capi_compiler_features)
+	CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-unknown-linux-gnu-gcc $(CARGO_BINARY) build --target=x86_64-unknown-linux-gnu --manifest-path wasm-instrument-c-api/Cargo.toml --release
+	mkdir -p packaged/lib/linux-amd64/
 	cp wasm-instrument-c-api/target/x86_64-unknown-linux-gnu/release/libgas_injector.so packaged/lib/linux-amd64/
 build-linux-amd64-docker:
-	docker run --platform=linux/amd64 -v "$(shell pwd):/build" -it rust bash -c "cd /build && make build-linux-amd64"
+	docker run --rm --platform=linux/amd64 -v "$(shell pwd):/build" -it rust bash -c "cd /build ; make build-linux-amd64"
 build-linux-aarch64:
 	rustup target add aarch64-unknown-linux-gnu
-	CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-unknown-linux-gnu-gcc $(CARGO_BINARY) build --target=x86_64-unknown-linux-gnu --manifest-path ./crates/c-api/Cargo.toml --release
-	cp ./target/x86_64-unknown-linux-gnu/release/libwasmi_c_api.so packaged/lib/linux-aarch64/
+	CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-unknown-linux-gnu-gcc $(CARGO_BINARY) build --target=x86_64-unknown-linux-gnu --manifest-path wasm-instrument-c-api/Cargo.toml --release
+	cp wasm-instrument-c-api/target/x86_64-unknown-linux-gnu/release/libgas_injector.so packaged/lib/linux-aarch64/
 build-linux-aarch64-docker:
 	docker run --rm --platform=linux/aarch64 -v "$(shell pwd):/build" -it rust bash -c "cd /build && make build-linux-aarch64"
 
