@@ -17,7 +17,8 @@ build-apple-aarch64:
 	cp wasm-instrument-c-api/target/aarch64-apple-darwin/release/libgas_injector.dylib packaged/lib/darwin-aarch64/
 build-linux-amd64:
 	rustup target add x86_64-unknown-linux-gnu
-	CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-unknown-linux-gnu-gcc $(CARGO_BINARY) build --target=x86_64-unknown-linux-gnu --manifest-path wasm-instrument-c-api/Cargo.toml --release
+#	CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-unknown-linux-gnu-gcc
+	$(CARGO_BINARY) build --target=x86_64-unknown-linux-gnu --manifest-path wasm-instrument-c-api/Cargo.toml --release
 	mkdir -p packaged/lib/linux-amd64/
 	cp wasm-instrument-c-api/target/x86_64-unknown-linux-gnu/release/libgas_injector.so packaged/lib/linux-amd64/
 build-linux-amd64-docker:
